@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}회원가입{% endblock %}
+
+{% block content %}
+    <form method="post" class="card pt-3">
+        {% csrf_token %}
+
+        <h1>회원가입</h1>
+        {% if form.errors %}
+            <div class="alert alert-danger">
+                {{ form.errors }}
+            </div>
+        {% endif %}
+
+        <div class="mb-3">
+            <label for="username" class="form-label">아이디</label>
+            <input type="text" id="username" name="username" class="form-control">
+        </div>
+
+        <div class="mb-3">
+            <label for="password1" class="form-label">비밀번호</label>
+            <input type="password" id="password1" name="password1" class="form-control" aria-describedby="passwordHelpBlock">
+        </div>
+
+        <div class="mb-3">
+            <label for="password2" class="form-label">비밀번호 확인</label>
+            <input type="password" id="password2" name="password2" class="form-control" aria-describedby="passwordHelpBlock">
+        </div>
+        <button type="submit" class="btn btn-primary mb-3">로그인</button>
+    </form>
+
+{% endblock %}
