@@ -18,6 +18,7 @@ from django.contrib import admin
 from django.urls import include, path
 from .views import HomeView, UserCreateView, UserCreateDoneTemplateView
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', HomeView.as_view(), name='home'),
@@ -26,4 +27,5 @@ urlpatterns = [
     path('accounts/register/', UserCreateView.as_view(), name='register'),
     path('accounts/register/done/', UserCreateDoneTemplateView.as_view(), name='register_done'),
 
+    path('docs/', include('docs.urls')),
 ]
