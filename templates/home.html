@@ -42,7 +42,7 @@
                 학습 체크를 위한 간단한 문법 문제도 제공할 예정이에요.<br/>
             </p>
             <div style="height: 30px"></div>
-            <a href="/grammer">문법 공부해보기 →</a>
+            <a href="{% url 'docs:home' %}">문법 공부해보기 →</a>
         </div>
         <div style="height: 80px"></div>
         <div>
@@ -55,7 +55,7 @@
                 <span>웹 컴파일러 서비스</span>를 제공해요.<br/>
             </p>
             <div style="height: 30px"></div>
-            <a href="/editor">코드 실행해보기 →</a>
+            <a href="{% url 'editor:home' %}">코드 실행해보기 →</a>
         </div>
     </div>
 {% endblock %}

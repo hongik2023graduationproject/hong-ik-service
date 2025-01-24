@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'docs.apps.DocsConfig',
+    'editor.apps.EditorConfig',
 ]
 
 MIDDLEWARE = [
