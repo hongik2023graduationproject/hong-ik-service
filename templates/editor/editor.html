@@ -1,1 +1,39 @@
 {% extends 'base.html' %}
+
+
+{% block content %}
+    <form id="codeForm">
+        {% csrf_token %}
+        <label>
+            <textarea id="code" name="code" cols="50" rows="20"></textarea>
+        </label>
+
+        <button type="submit">실행</button>
+    </form>
+    <div id="result"></div>
+{% endblock %}
+
+{% block extra-script %}
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            document.getElementById('codeForm').addEventListener('submit', function (event) {
+                event.preventDefault();
+
+                const formData = new FormData(this);
+                formData.append('csrfmiddlewaretoken', '{{ csrf_token }}'); // CSRF 토큰 추가
+
+                fetch('{% url "editor:execute_code" %}', {
+                    method: 'POST',
+                    body: formData
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        document.getElementById('result').textContent = data.output;
+                    })
+                    .catch(error => {
+                        document.getElementById('result').textContent = '오류 발생: ' + error;
+                    });
+            });
+        });
+    </script>
+{% endblock %}
